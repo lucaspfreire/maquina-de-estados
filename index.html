@@ -9,13 +9,26 @@
 <body>
     <div class="container">
         <h1 class="tittle">Máquina de estados (Semáforo)</h1>
-        <div class="semaforo">
-            <div class="vermelho"></div>
-            <div class="amarelo"></div>
-            <div class="verde"></div>
-        </div>
-        <div class="metricas">
-            <h2>Métricas</h2>
+        <div class="card">
+            <div class="semaforo">
+                <div class="vermelho"></div>
+                <div class="amarelo"></div>
+                <div class="verde"></div>
+            </div>
+            <div class="metricas">
+                <div class="conteudoMetricas">
+                    <h2 class="tittleMetricas">Métricas:</h2>
+                    <p>Quantos carros passaram o sinal: <span id="qtdCarrosPassaram">X</span></p>
+                    <p>Quantos pedestres foram atropelados: <span id="qtdPedestresAtropelados">X</span></p>
+                    <p>Quantos carros tomaram multa: <span id="qtdCarrosMultados">X</span></p>
+                    <p>Quantos pedestres atravessaram a rua: <span id="qtdPedestresAtravessaram">X</span></p>
+                    <p>Quantidade total de tentativas: <span id="qtdTotalTentativas">X</span></p>
+                </div>
+                <div class="divButton">
+                    <button id="actionButton">Atravessar a rua</button>
+                    <button id="resetGame">Resetar métricas</button>
+                </div>
+            </div>
         </div>
     </div>
     
