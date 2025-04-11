@@ -22,4 +22,49 @@
 
 // ESTUDAR CONCEITO DE MÁQUINA DE ESTADOS E SET TIMEOUT EM JS
 
+var corAtual
 
+function verde() {
+    var corVerde = document.getElementById("verde")
+    corVerde.style.backgroundColor = "green"
+    corAtual = "green"
+    setTimeout(() => {
+        corVerde.style.backgroundColor = "grey"
+        amarelo()
+    },5000)
+
+}
+
+function amarelo() {
+    var corAmarelo = document.getElementById("amarelo")
+    corAmarelo.style.backgroundColor = "yellow"
+    corAtual = "yellow"
+    setTimeout(() => {
+        corAmarelo.style.backgroundColor = "grey"
+        vermelho()
+    },2000)
+}
+
+function vermelho() {
+    var corVermelho = document.getElementById("vermelho")
+    corVermelho.style.backgroundColor = "red"
+    corAtual = "red"
+    setTimeout(() => {
+        corVermelho.style.backgroundColor = "grey"
+        verde()
+    },5000)
+}
+
+vermelho()
+
+function resetGame() {
+    location.reload()
+}
+
+var qtdCarrosPassaram = 0
+
+function logicaGame() {
+    if (corAtual == "green") {
+        document.getElementById("qtdCarrosPassaram").innerHTML = ++qtdCarrosPassaram
+    }
+}

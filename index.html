@@ -11,9 +11,9 @@
         <h1 class="tittle">Máquina de estados (Semáforo)</h1>
         <div class="card">
             <div class="semaforo">
-                <div class="vermelho"></div>
-                <div class="amarelo"></div>
-                <div class="verde"></div>
+                <div id="vermelho"></div>
+                <div id="amarelo"></div>
+                <div id="verde"></div>
             </div>
             <div class="metricas">
                 <div class="conteudoMetricas">
@@ -25,8 +25,8 @@
                     <p>Quantidade total de tentativas: <span id="qtdTotalTentativas">X</span></p>
                 </div>
                 <div class="divButton">
-                    <button id="actionButton">Atravessar a rua</button>
-                    <button id="resetGame">Resetar métricas</button>
+                    <button id="actionButton" onclick="logicaGame()">Atravessar a rua</button>
+                    <button id="resetGame" onclick="resetGame()">Resetar métricas</button>
                 </div>
             </div>
         </div>
