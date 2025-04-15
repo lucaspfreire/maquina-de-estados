@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Projeto Máquina de estados</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="tittle">Máquina de estados (Semáforo)</h1>
+        <div class="card">
+            <div class="semaforo">
+                <div id="vermelho"></div>
+                <div id="amarelo"></div>
+                <div id="verde"></div>
+            </div>
+            <div class="metricas">
+                <div class="conteudoMetricas">
+                    <h2 class="tittleMetricas">Métricas:</h2>
+                    <p>Quantos carros passaram o sinal: <span id="qtdCarrosPassaram">0</span></p>
+                    <p>Quantos pedestres foram atropelados: <span id="qtdPedestresAtropelados">0</span></p>
+                    <p>Quantos carros tomaram multa: <span id="qtdCarrosMultados">0</span></p>
+                    <p>Quantos pedestres atravessaram a rua: <span id="qtdPedestresAtravessaram">0</span></p>
+                    <p>Quantidade total de tentativas: <span id="qtdTotalTentativas">0</span></p>
+                </div>
+                <div class="textResult">
+                    <h3 id="result"></h3>
+                </div>
+                    <div class="actionButton">
+                        <button id="bntLogicaPedestre" onclick="logicaPedestre()">Atravessar a rua</button>
+                        <button id="btnLogicaCarro" onclick="logicaCarro()">Avançar sinal</button>
+                    </div>
+                <div class="divBtnResetGame">
+                    <button id="btnResetGame" onclick="resetGame()">Resetar métricas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="index.js"></script>
+</body>
+</html>
