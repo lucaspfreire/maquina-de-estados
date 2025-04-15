@@ -10,7 +10,7 @@
 // Verde: 60% de chance de ser atropelado e quando atrolepado print "Pedestre foi atropelado!" se não, print "Pedestre atravessou a rua!";
 
 // Criar botão "Avançar sinal" com os seguintes critérios:
-// Vermelho: print "Avanço de sinal, carro tomou multa!";
+// Vermelho: print "Carro avançou o sinal, tomou multa!";
 // Amarelo: 30% de chance do carro tomar multa e quando tomar print "Carro tomou multa!" se não, print "Carro passou sinal!";
 // Verde: print !Carro passou o sinal!";
 
@@ -32,7 +32,6 @@ function verde() {
         corVerde.style.backgroundColor = "grey"
         amarelo()
     },5000)
-
 }
 
 function amarelo() {
@@ -62,9 +61,51 @@ function resetGame() {
 }
 
 var qtdCarrosPassaram = 0
+var qtdPedestresAtropelados = 0
+var qtdCarrosMultados = 0
+var qtdPedestresAtravessaram = 0
+var qtdTotalTentativas = 0
 
-function logicaGame() {
-    if (corAtual == "green") {
-        document.getElementById("qtdCarrosPassaram").innerHTML = ++qtdCarrosPassaram
+function logicaPedestre() {
+    chanceAtropelamento = Math.round(Math.random() * 100)
+
+    if (corAtual == "red") {
+        qtdPedestresAtravessaram = actions(qtdPedestresAtravessaram, "qtdPedestresAtravessaram", "Pedestre atravessou a rua!")
     }
+    else if (corAtual == "yellow" && chanceAtropelamento <= 30) {
+        qtdPedestresAtropelados = actions(qtdPedestresAtropelados, "qtdPedestresAtropelados", "Pedestre foi atropelado!")
+    }
+    else if (corAtual == "yellow" && chanceAtropelamento >= 30) {
+        qtdPedestresAtravessaram = actions(qtdPedestresAtravessaram, "qtdPedestresAtravessaram", "Pedestre atravessou a rua!")
+    }
+    else if (corAtual == "green" && chanceAtropelamento <= 60) {
+        qtdPedestresAtropelados = actions(qtdPedestresAtropelados, "qtdPedestresAtropelados", "Pedestre foi atropelado!")
+    }
+    else if (corAtual == "green" && chanceAtropelamento >= 60) {
+        qtdPedestresAtravessaram = actions(qtdPedestresAtravessaram, "qtdPedestresAtravessaram", "Pedestre atravessou a rua!")
+    }
+}
+
+function logicaCarro() {
+    chanceMulta = Math.round(Math.random() * 100)
+
+    if (corAtual == "green") {
+        qtdCarrosPassaram = actions(qtdCarrosPassaram, "qtdCarrosPassaram", "Carro passou o sinal!")
+    }
+    else if (corAtual == "red") {
+        qtdCarrosMultados = actions(qtdCarrosMultados, "qtdCarrosMultados", "Carro tomou multa!")
+    }
+    else if (corAtual == "yellow" && chanceMulta <= 30) {
+        qtdCarrosMultados = actions(qtdCarrosMultados, "qtdCarrosMultados", "Carro tomou multa!")
+    }
+    else if (corAtual == "yellow" && chanceMulta >= 30) {
+        qtdCarrosPassaram = actions(qtdCarrosPassaram, "qtdCarrosPassaram", "Carro passou o sinal!")
+    }
+}
+
+function actions(variable, idQuantity, message) {
+    document.getElementById(`${idQuantity}`).innerHTML = ++variable
+    document.getElementById("result").innerHTML = message
+    document.getElementById("qtdTotalTentativas").innerHTML = ++qtdTotalTentativas
+    return variable
 }
